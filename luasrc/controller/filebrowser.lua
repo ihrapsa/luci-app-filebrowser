@@ -2,23 +2,23 @@ module("luci.controller.filebrowser", package.seeall)
 
 function index()
 
-    page = entry({"admin", "system", "filebrowser"}, template("filebrowser"), _("File Browser"), 60)
+    page = entry({"admin", "services", "filebrowser"}, template("filebrowser"), _("File Browser"), 60)
     page.i18n = "base"
     page.dependent = true
 
-    page = entry({"admin", "system", "filebrowser_list"}, call("filebrowser_list"), nil)
+    page = entry({"admin", "services", "filebrowser_list"}, call("filebrowser_list"), nil)
     page.leaf = true
 
-    page = entry({"admin", "system", "filebrowser_open"}, call("filebrowser_open"), nil)
+    page = entry({"admin", "services", "filebrowser_open"}, call("filebrowser_open"), nil)
     page.leaf = true
 
-    page = entry({"admin", "system", "filebrowser_delete"}, call("filebrowser_delete"), nil)
+    page = entry({"admin", "services", "filebrowser_delete"}, call("filebrowser_delete"), nil)
     page.leaf = true
 
-    page = entry({"admin", "system", "filebrowser_rename"}, call("filebrowser_rename"), nil)
+    page = entry({"admin", "services", "filebrowser_rename"}, call("filebrowser_rename"), nil)
     page.leaf = true
 
-    page = entry({"admin", "system", "filebrowser_upload"}, call("filebrowser_upload"), nil)
+    page = entry({"admin", "services", "filebrowser_upload"}, call("filebrowser_upload"), nil)
     page.leaf = true
 
 end
