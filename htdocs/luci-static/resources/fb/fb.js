@@ -19,7 +19,7 @@ String.prototype.replaceAll = function(search, replacement) {
   function removePath(filename, isdir) {
     var c = confirm(_('Want to delete: ') + filename + ' ?');
     if (c) {
-      iwxhr.get('/cgi-bin/luci/admin/system/filebrowser_delete',
+      iwxhr.get('/cgi-bin/luci/admin/services/filebrowser_delete',
         {
           path: concatPath(currentPath, filename),
           isdir: isdir
@@ -37,7 +37,7 @@ String.prototype.replaceAll = function(search, replacement) {
       newname = newname.trim();
       if (newname != filename) {
         var newpath = concatPath(currentPath, newname);
-        iwxhr.get('/cgi-bin/luci/admin/system/filebrowser_rename',
+        iwxhr.get('/cgi-bin/luci/admin/services/filebrowser_rename',
           {
             filepath: concatPath(currentPath, filename),
             newpath: newpath
@@ -54,7 +54,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
   function openpath(filename, dirname) {
     dirname = dirname || currentPath;
-    window.open('/cgi-bin/luci/admin/system/filebrowser_open?path='
+    window.open('/cgi-bin/luci/admin/services/filebrowser_open?path='
       + encodeURIComponent(dirname) + '&filename='
       + encodeURIComponent(filename));
   }
@@ -156,7 +156,7 @@ String.prototype.replaceAll = function(search, replacement) {
     opt = opt || {};
     path = concatPath(path, '');
     if (currentPath != path) {
-      iwxhr.get('/cgi-bin/luci/admin/system/filebrowser_list',
+      iwxhr.get('/cgi-bin/luci/admin/services/filebrowser_list',
         {path: path},
         function (x, res) {
           if (res.ec === 0) {
@@ -201,7 +201,7 @@ String.prototype.replaceAll = function(search, replacement) {
       formData.append('upload-dir', concatPath(currentPath, ''));
       formData.append('upload-file', uploadinput.files[0]);
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/cgi-bin/luci/admin/system/filebrowser_upload", true);
+      xhr.open("POST", "/cgi-bin/luci/admin/services/filebrowser_upload", true);
       xhr.onload = function() {
         if (xhr.status == 200) {
           var res = JSON.parse(xhr.responseText);
